@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Catppuccin Mocha pink
+pink="#C6A0F6"
+
+# Get volume % and mute state
+vol=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]{1,3}(?=%)' | head -1)
+mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+
+# Output
+if [ "$mute" = "yes" ]; then
+    echo "^c$pink^  ${vol}%^d^"
+else
+    echo "^c$pink^  ${vol}%^d^"
+fi
+
